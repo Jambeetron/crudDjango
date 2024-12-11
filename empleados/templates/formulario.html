@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registrar Empleado</title>
+</head>
+
+<body>
+    <h1>Registrar Empleado</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Cédula:</label>
+        <input type="text" name="cedula" required><br>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required><br>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" required><br>
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" required><br>
+        <label>Horas Trabajadas:</label>
+        <input type="number" name="horas_trabajadas" required><br>
+        <label>Valor por Hora:</label>
+        <input type="number" step="0.01" name="valor_hora" required><br>
+        <button type="submit">Calcular Salario</button>
+    </form>
+</body>
+
+</html>
