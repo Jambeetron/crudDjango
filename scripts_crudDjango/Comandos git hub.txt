@@ -1,0 +1,21 @@
+cd ~/Downloads/crudDjango
+git init
+git remote add origin https://github.com/Jambeetron/crudDjango.git
+git add .
+git commit -m "Subida inicial del proyecto crudDjango"
+git push -u origin main
+
+archivo .gitignore
+# Archivos de entorno virtual
+.venv/
+
+# Archivos de base de datos local
+db.sqlite3
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de configuración local
+.env
