@@ -1,17 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Resultado</title>
+    <link rel="stylesheet" href="{% static 'style_resultado.css' %}">
 </head>
 
 <body>
-    <h1>Resultado</h1>
-    <p><strong>Empleado:</strong> {{ empleado.nombre }} {{ empleado.apellido }}</p>
-    <p><strong>Cédula:</strong> {{ empleado.cedula }}</p>
-    <p><strong>Teléfono:</strong> {{ empleado.telefono }}</p>
-    <p><strong>Horas Trabajadas:</strong> {{ empleado.horas_trabajadas }}</p>
-    <p><strong>Salario Calculado:</strong> {{ salario_formateado }}</p>
+    <div class="container">
+        <h1>Resultado</h1>
+        <p><strong>Empleado:</strong> {{ empleado.nombre }} {{ empleado.apellido }}</p>
+        <p><strong>Cédula:</strong> {{ empleado.cedula }}</p>
+        <p><strong>Teléfono:</strong> {{ empleado.telefono }}</p>
+        <p><strong>Horas Trabajadas:</strong> {{ empleado.horas_trabajadas }}</p>
+        <p><strong>Salario Calculado:</strong> {{ salario_formateado }}</p>
+
+        <!-- Botón para calcular más salarios -->
+        <div class="actions">
+            <a href="{% url 'formulario' %}" class="btn">Calcular Otro Salario</a>
+            <a href="{% url 'ver_historial' %}" class="btn">Ver Historial</a>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,53 @@
+{% load static humanize %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Historial de Salarios</title>
+    <link rel="stylesheet" href="{% static 'style_resultado.css' %}">
+    <link rel="stylesheet" href="{% static 'style_historial.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Historial de Salarios Calculados</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Empleado</th>
+                    <th>Cédula</th>
+                    <th>Teléfono</th>
+                    <th>Horas Trabajadas</th>
+                    <th>Salario</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in historial %}
+                <tr>
+                    <td>{{ registro.empleado }}</td>
+                    <td>{{ registro.cedula }}</td>
+                    <td>{{ registro.telefono }}</td>
+                    <td>{{ registro.horas_trabajadas }}</td>
+                    <td>${{ registro.salario|floatformat:2|intcomma }}</td>
+                    <td>{{ registro.fecha_calculo }}</td>
+                    <td>
+                        <form method="post" action="{% url 'borrar_dato' registro.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="post" action="{% url 'borrar_todo' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete-all">Eliminar Todo</button>
+        </form>
+        <a href="{% url 'formulario' %}" class="btn">Volver al Formulario</a>
+    </div>
+</body>
+
+</html>

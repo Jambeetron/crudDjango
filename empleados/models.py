@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from django.utils.timezone import now
 
 class Empleado(models.Model):
     cedula = models.CharField(max_length=10, unique=True)
@@ -22,3 +23,14 @@ class Empleado(models.Model):
         
     def __str__(self):
         return f'{self.nombre} {self.apellido} - {self.cedula}'
+
+class HistorialSalarios(models.Model):
+    empleado = models.CharField(max_length=255)
+    cedula = models.CharField(max_length=20)
+    telefono = models.CharField(max_length=20)
+    horas_trabajadas = models.IntegerField()
+    salario = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_calculo = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return f"{self.empleado} - {self.salario} ({self.fecha_calculo})"

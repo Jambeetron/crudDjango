@@ -19,3 +19,11 @@ __pycache__/
 
 # Archivos de configuración local
 .env
+
+Sincronizar los cambios del repositorio remoto:
+git pull origin main --rebase
+Resolver conflictos (si ocurren):
+git add .
+git commit -m "Resuelve conflictos"
+Empujar los cambios al repositorio remoto:
+git push -u origin main
